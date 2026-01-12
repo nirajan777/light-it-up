@@ -1,0 +1,5 @@
+{
+  "name": "Light It Up",
+  "description": "An immersive, interactive light bulb simulation featuring realistic glow effects, pull-rope animations, and persistent state management.",
+  "requestFramePermissions": []
+}

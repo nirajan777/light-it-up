@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light It Up | An Interactive Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #050505;
+        margin: 0;
+        overflow: hidden;
+        color: #fafafa;
+      }
+
+      .noise-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        z-index: 100;
+      }
+
+      @keyframes fade-up {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes hint-shimmer {
+        0%, 100% { opacity: 0.3; transform: translateY(0); }
+        50% { opacity: 0.6; transform: translateY(-5px); }
+      }
+
+      @keyframes bulb-breath {
+        0%, 100% { opacity: 0.85; transform: scale(1); filter: brightness(1); }
+        50% { opacity: 1; transform: scale(1.015); filter: brightness(1.15); }
+      }
+
+      @keyframes glow-shimmer {
+        0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
+        33% { opacity: 0.22; transform: translate(-50%, -50%) scale(1.1); }
+        66% { opacity: 0.12; transform: translate(-50%, -50%) scale(0.95); }
+      }
+
+      .animate-fade-up {
+        animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .animate-fade-in {
+        animation: fade-in 1.2s ease-out forwards;
+      }
+
+      .animate-hint {
+        animation: hint-shimmer 3s ease-in-out infinite;
+      }
+
+      .animate-bulb-breath {
+        animation: bulb-breath 5s ease-in-out infinite;
+      }
+
+      .animate-glow-shimmer {
+        animation: glow-shimmer 10s ease-in-out infinite;
+      }
+
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .font-serif {
+        font-family: 'Playfair Display', serif;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <div id="root"></div>
+</body>
+</html>
